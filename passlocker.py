@@ -22,6 +22,20 @@ class User:
         User.user_list.append(self)
 
         
+class Credentials:
+    """
+    Class that generates new instances of credentials.
+    """
+
+    credentials_list = [] # Empty credentials list
+
+    def __init__(self,account,username, password):
+        """
+        method that defines the credentials properties.
+        """
+        self.account = account
+        self.username = username
+        self.password = password
 
 
 
