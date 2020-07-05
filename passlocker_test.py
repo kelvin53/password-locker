@@ -56,7 +56,7 @@ class TestCredentials(unittest.TestCase):
         
         self.assertEqual(self.new_credential.account,"twitter")
         self.assertEqual(self.new_credential.username,"KI Prono")
-        self.assertEqual(self.new_credential.password,"kelvinKIPkoskei")
+        self.assertEqual(self.new_credential.password,"kelvinKIPkost")
 
 
 if __name__ == '__main__':
