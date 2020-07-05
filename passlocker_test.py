@@ -98,5 +98,19 @@ class TestCredentials(unittest.TestCase):
             self.assertEqual(len(Credentials.credentials_list),1)
 
 
+    def test_find_credential(self):
+        """
+         test to check if we can return a Boolean  if we cannot find the credential.
+        """
+        self.new_credential.save_credential()
+        test_credential = Credentials("Facebook","WiseOwl","hdfRE") 
+        test_credential.save_credential()
+
+        the_credential = Credentials.find_credential("Facebook")
+
+        self.assertEqual(the_credential.account,test_credential.account)
+
+
+
 if __name__ == '__main__':
     unittest.main()
