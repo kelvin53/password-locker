@@ -1,6 +1,6 @@
 import unittest # Importing the unittest module
 from passlocker import User # Importing the User class
-
+from passlocker import Credentials #Importing the Credentials class
 class TestUser(unittest.TestCase):
 
     '''
@@ -32,6 +32,31 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user.save_user() # saving the new user
         self.assertEqual(len(User.user_list),1)
+
+
+class TestCredentials(unittest.TestCase):
+
+    '''
+    Test class that defines test cases for the Credentials class behaviours.
+
+    Args:
+        unittest.TestCase: TestCase class that helps in creating test cases
+    '''
+    def setUp(self):
+        '''
+        Set up method to run before each test cases.
+        '''
+        self.new_credential = Credentials('twitter','KI Prono','kelvinKIPkost') # create credential object
+
+
+    def test_init(self):
+        '''
+        test_init test case to test if the object is initialized properly
+        '''
+        
+        self.assertEqual(self.new_credential.account,"twitter")
+        self.assertEqual(self.new_credential.username,"KI Prono")
+        self.assertEqual(self.new_credential.password,"kelvinKIPkoskei")
 
 
 if __name__ == '__main__':
