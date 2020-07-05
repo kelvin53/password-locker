@@ -66,7 +66,7 @@ class TestCredentials(unittest.TestCase):
          the credential list
         '''
         self.new_credential.save_credential() # saving the new credential
-        self.assertEqual(len(Contact.credentials_list),1)
+        self.assertEqual(len(Credentials.credentials_list),1)
 
 
     def tearDown(self):
