@@ -1,7 +1,5 @@
 #!/usr/bin/env python3.6
 from passlocker import User,Credentials
-import random #Generate random numbers for various distributions including integer and floats.
-import string #string module allows you to create and customize your own string
 
 def create_user(username,password):
     '''
@@ -55,6 +53,7 @@ def find_credential(account):
 
 def main():
     print("Welcome to your Password Locker \n Enter one of the following codes to proceed.\n NU --- Create New User Account  \n LI ---  Login  \n")
+    short_code=input("").lower().strip()
     if short_code == "nu":
         print("Sign Up")
         print('*' * 40)
@@ -66,11 +65,7 @@ def main():
                 password = input("Enter Password\n")
                 break
             elif password_Choice == 'gp':
-                def random_password(string_length):
-                            letters = string.ascii_letters
-                            return "".join(random.choice(letters) for i in range(string_length))
-                            print(f"Your random password for {username} is:", random_password(8))
-                
+                password = generate_Password()
             else:
                 print("Invalid password please try again")
         save_user(create_new_user(username,password))
@@ -80,7 +75,7 @@ def main():
     elif short_code == "li":
         print("*"*70)
         print("Enter your User name and your Password to log in:")
-        print('*' * 70-)
+        print('*' * 70)
         username = input("User name: ")
         password = input("password: ")
         login = login_user(username,password)
@@ -105,11 +100,7 @@ def main():
                     password = input("Enter Your Own Password\n")
                     break
                 elif password_Choice == 'gp':
-                    def random_password(string_length):
-                            letters = string.ascii_letters
-                            return "".join(random.choice(letters) for i in range(string_length))
-                            print(f"Your random password for {username} is:", random_password(8))
-                
+                    password = generatePassword()
                     break
                 else:
                     print("Invalid password please try again")
@@ -155,12 +146,8 @@ def main():
                 print("That Credential you want to delete does not exist in your store yet")
 
         elif short_code == 'gp':
-            def random_password(string_length):
-                            letters = string.ascii_letters
-                            return "".join(random.choice(letters) for i in range(string_length))
-                            print(f"Your random password for {username} is:", random_password(8))
-                
-            print(f" {password} Has been generated succesfull. You can proceed to use it to your account")
+            password = generatePassword()   
+            print(f" {password} Has been generated succesfully. You can proceed to use it to your account")
         elif short_code == 'ex':
             print("Thanks for using passwords locker.. See you next time!")
             break
