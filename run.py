@@ -44,7 +44,6 @@ def display_accounts_details():
 def delete_credential(credentials):
     """
     Function to delete a Credentials from credentials list
-
     """
     credentials.delete_credentials()
 
@@ -54,12 +53,37 @@ def find_credential(account):
     """
     return Credentials.find_credential(account)
 
-def generate_Password():
-    '''
-    generates a random password for the user.
-    '''
-    auto_password=Credentials.generatePassword()
-    return auto_password
-
-
-
+def main():
+    print("Welcome to your Password Locker \n Enter one of the following codes to proceed.\n NU --- Create New User Account  \n LI ---  Login  \n")
+    if short_code == "nu":
+        print("Sign Up")
+        print('*' * 40)
+        username = input("User_name: ")
+        while True:
+            print(" TP - To create your own pasword:\n GP - To generate random Password")
+            password_Choice = input().lower().strip()
+            if password_Choice == 'tp':
+                password = input("Enter Password\n")
+                break
+            elif password_Choice == 'gp':
+                def random_password(string_length):
+                            letters = string.ascii_letters
+                            return "".join(random.choice(letters) for i in range(string_length))
+                            print(f"Your random password for {username} is:", random_password(8))
+                
+            else:
+                print("Invalid password please try again")
+        save_user(create_new_user(username,password))
+        print("*"*40)
+        print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
+        print("*"*50)
+    elif short_code == "li":
+        print("*"*70)
+        print("Enter your User name and your Password to log in:")
+        print('*' * 70-)
+        username = input("User name: ")
+        password = input("password: ")
+        login = login_user(username,password)
+        if login_user == login:
+            print(f"Hello {username}.Welcome To Password Locker App")  
+            print('\n')
