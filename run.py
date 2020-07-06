@@ -92,21 +92,18 @@ def main():
             print("Account name ....")
             account = input().lower()
             print("Your Account username")
-            userName = input()
+            username = input()
             while True:
                 print(" TP - To type your own pasword if you already have an account:\n GP - To generate random Password")
                 password_Choice = input().lower().strip()
                 if password_Choice == 'tp':
                     password = input("Enter Your Own Password\n")
                     break
-                elif password_Choice == 'gp':
-                    password = generatePassword()
-                    break
                 else:
                     print("Invalid password please try again")
             save_credentials(create_new_credential(account,username,password))
             print('\n')
-            print(f"Account Credential for: {account} - UserName: {username} - Password:{password} created succesfully")
+            print(f"Account Credential for: {account} - Username: {username} - Password:{password} created succesfully")
             print('\n')
         elif short_code == "dc":
             if display_accounts_details():
@@ -145,9 +142,7 @@ def main():
             else:
                 print("That Credential you want to delete does not exist in your store yet")
 
-        elif short_code == 'gp':
-            password = generatePassword()   
-            print(f" {password} Has been generated succesfully. You can proceed to use it to your account")
+
         elif short_code == 'ex':
             print("Thanks for using passwords locker.. See you next time!")
             break
