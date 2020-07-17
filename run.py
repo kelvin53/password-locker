@@ -1,155 +1,121 @@
 #!/usr/bin/env python3.6
-from passlocker import User,Credentials
+from user import User
+from credentials import Info
 
-def create_user(username,password):
-    '''
-    Function to create a new user
-    '''
-    new_user = User(username,password)
+def create_account(f_name,m_name,e_mail):
+    new_user = User(f_name,m_name,e_mail)
     return new_user
-
-
-def save_user(user):
-    '''
-    Function to save new user
-    '''
+def create_credentials(face_bookp,e_mailp):
+    new_cred = Info(face_bookp,e_mailp)
+    return new_cred
+def save_account(user):
     user.save_user()
-
-
-def del_user(user):
-    '''
-    Function to delete a user
-    '''
-    user.delete_user()
-
-def create_new_credential(account,username,password):
-    """
-    Function to create a new credential for a given user
-    """
-    new_credential = Credentials(account,username,password)
-    return new_credential
 def save_credentials(credentials):
-    """
-    Function to save Credentials to the credentials list
-    """
-    credentials. save_details()
-def display_accounts_details():
-    """
-    Function that returns all the saved credential.
-    """
-    return Credentials.display_credentials()
-
-def delete_credential(credentials):
-    """
-    Function to delete a Credentials from credentials list
-    """
-    credentials.delete_credentials()
-
-def find_credential(account):
-    """
-    Function that finds a Credentials by an account name and returns the Credentials that belong to that account
-    """
-    return Credentials.find_credential(account)
-
+    credentials.save_info()
+def display_users():
+    return User.display_users()
+def display_creds():
+    return Info.display_info()
 def main():
-    print("Welcome to your Password Locker \n Enter one of the following codes to proceed.\n NU --- Create New User Account  \n LI ---  Login  \n")
-    short_code=input("").lower().strip()
-    if short_code == "nu":
-        print("Sign Up")
-        print('*' * 40)
-        username = input("User_name: ")
-        while True:
-            print(" TP - To create your own pasword:\n GP - To generate random Password")
-            password_Choice = input().lower().strip()
-            if password_Choice == 'tp':
-                password = input("Enter Password\n")
-                break
-            elif password_Choice == 'gp':
-                password = generate_Password()
-            else:
-                print("Invalid password please try again")
-        save_user(create_new_user(username,password))
-        print("*"*40)
-        print(f"Hello {username}, Your account has been created succesfully! Your password is: {password}")
-        print("*"*50)
-    elif short_code == "li":
-        print("*"*70)
-        print("Enter your User name and your Password to log in:")
-        print('*' * 70)
-        username = input("User name: ")
-        password = input("password: ")
-        login = login_user(username,password)
-        if login_user == login:
-            print(f"Hello {username}.Welcome To Password Locker App")  
-            print('\n')
-
+    print(" ")
+    print("HELLO THERE  WELCOME!!")
+    print(" ")
+    print(" ")
     while True:
-        print("Use these short codes:\n CC - Create a new credential \n DC - Display Credentials \n FC - Find a credential \n GP - Generate A randomn password \n D - Delete credential \n EX - Exit the application \n")
-        short_code = input().lower().strip()
-        if short_code == "cc":
-            print("Create New Credential")
-            print("."*20)
-            print("Account name ....")
-            account = input().lower()
-            print("Your Account username")
-            username = input()
-            while True:
-                print(" TP - To type your own pasword if you already have an account:\n GP - To generate random Password")
-                password_Choice = input().lower().strip()
-                if password_Choice == 'tp':
-                    password = input("Enter Your Own Password\n")
-                    break
-                else:
-                    print("Invalid password please try again")
-            save_credentials(create_new_credential(account,username,password))
-            print('\n')
-            print(f"Account Credential for: {account} - Username: {username} - Password:{password} created succesfully")
-            print('\n')
-        elif short_code == "dc":
-            if display_accounts_details():
-                print("Here's your list of accounts: ")
-                 
-                print('*' * 30)
-                print('_'* 30)
-                for account in display_accounts_details():
-                    print(f" Account:{account.account} \n User Name:{username}\n Password:{password}")
-                    print('_'* 30)
-                print('*' * 30)
-            else:
-                print("You don't have any credentials saved yet..........")
-        elif short_code == "fc":
-            print("Enter the Account Name you want to search for")
-            search_name = input().lower()
-            if find_credential(search_name):
-                search_credential = find_credential(search_name)
-                print(f"Account Name : {search_credential.account}")
-                print('-' * 50)
-                print(f"User Name: {search_credential.username} Password :{search_credential.password}")
-                print('-' * 50)
-            else:
-                print("That Credential does not exist")
-                print('\n')
-        elif short_code == "d":
-            print("Enter the account name of the Credentials you want to delete")
-            search_name = input().lower()
-            if find_credential(search_name):
-                search_credential = find_credential(search_name)
-                print("_"*50)
-                search_credential.delete_credentials()
-                print('\n')
-                print(f"Your stored credentials for : {search_credential.account} successfully deleted!!!")
-                print('\n')
-            else:
-                print("That Credential you want to delete does not exist in your store yet")
+        print("-" * 156)
+        print("""USE THE FOLLOWING SHORT CODES!!
+1. cc - CREATE NEW ACCOUNT
+2. ex - EXIT PASSWORD LOCKER
+3. dac - DISPLAY ACCOUNTS
+4. gs - GENERATE PASSWORDS""")
 
 
-        elif short_code == 'ex':
-            print("Thanks for using passwords locker.. See you next time!")
+        print(" ")
+        print("      TYPE IN A SHORT CODE!")
+        print(" ")
+        short_code = input() .lower()
+        if short_code =='cc':
+            print(" ")
+            print("-" * 156)
+            print("      CREATE A NEW ACCOUNT!")
+            print(" ")
+            print(" ")
+            print("what is your first name?..")
+            print(" ")
+            f_name =input()
+            print("What is your middle name?..")
+            print(" ")
+            m_name= input()
+            print("what is your email address?..")
+            print(" ")
+            e_mail= input()
+            print ("what is your facebook password?..")
+            print(" ")
+            face_bookp =input()
+            print("what is your email password?..")
+            print(" ")
+            e_mailp= input()
+            save_account(create_account(f_name,m_name,e_mail))
+            print('\n')
+            save_credentials(create_credentials (face_bookp,e_mailp))
+            print('\n')
+            print("-" * 156)
+            print(f"New Account  {f_name } { m_name} { face_bookp } has been created")
+            print('\n')
+        elif short_code =='dac':
+            if display_users():
+                print(" ")
+                print("The user name")
+                print(" ")
+                print('\n')
+                for user in display_users():
+                    print(f"{user.f_name}{user.m_name}")
+                for credentials in display_creds():
+                    print (f"{face_bookp}")
+                    print(" ")
+
+            else:
+                    print('\n')
+                    print("-" * 156)
+                    print(" ")
+                    print("                         PLEASE CREATE AN ACCOUNT ")
+                    print("                    You have not created an account yet :( ")
+                    print(" ")
+        elif  short_code == 'gs':
+            print(" ")
+            print(" ")
+            print("TO GENERATE A PASSWORD ADD IN YOUR FIRST NAME AND FACEBOOK BELOW!!")
+            print(" ")
+            list_of_inputs = [c for c in input()]
+
+            # list_of_inputs= list(list_of_inputs)
+            list_of_inputs.reverse()
+
+
+
+            print (list_of_inputs)
+
+
+
+
+
+
+        elif short_code == "ex":
+            print("-" * 156)
+            print(" ")
+            print("                        THAX FOR DROPING IN!")
+            print("                           Bye... Bye...")
+            print(" ")
+            print("-" * 156)
             break
         else:
-            print("Wrong entry... Check your entry again and let it match those in the menu")
-    else:
-        print("Please enter a valid input to continue")
+            print("-" * 156)
+            print(" ")
+            print("                              RETRY!!")
+            print(" ")
+            print("                Please Select One Of The Options Provided")
+            print(" ")
 
 if __name__ == '__main__':
-    main()       
+
+    main()
